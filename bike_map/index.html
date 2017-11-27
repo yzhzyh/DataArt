@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/p5.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.sound.min.js"></script>
+    <script src="mappa.min.js" type="text/javascript"></script>
+
+    <link rel="stylesheet" href="stylesheet-pure-css.css">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+
+  </head>
+ 
+  <body>
+
+
+    <section id="first" class="section">
+ <p style="width:200px ">View Data By Category</p>
+      <div class="container">
+
+        <input type="radio" name="group1" id="accidents">
+        <label for="accidents"><span class="radio">August Accidents</span></label>
+      </div>
+
+      <div class="container">
+        <input type="radio" name="group1" id="complaints">
+        <label for="complaints"><span class="radio">Blocked Bike Lane Complaints</span></label>
+      </div>
+
+    </section>
+
+
+    <section id="second" class="section">
+    <p>Filtered By</p>
+
+       <div class="container">
+        <input type="radio" name="group2" id="all">
+        <label for="all"><span class="radio">All</span></label>
+      </div>
+      <div class="container">
+        <input type="radio" name="group2" id="pastday">
+        <label for="pastday"><span class="radio">Past Day</span></label>
+      </div>
+
+      <div class="container">
+        <input type="radio" name="group2" id="pastweek">
+        <label for="pastweek"><span class="radio">Past Week</span></label>
+      </div>
+
+      <div class="container">
+        <input type="radio" name="group2" id="allweekday">
+        <label for="allweekday"><span class="radio">All Weekdays</span></label>
+      </div>
+
+      <div class="container">
+        <input type="radio" name="group2" id="allweekends">
+        <label for="allweekends"><span class="radio">All Weekends</span></label>
+      </div>
+
+    </section>
+      
+  </body>
+
+  <script src="sketch.js"></script>
+
+  <script type="text/javascript">
+
+
+
+    function showCertainView() {
+      
+      if (document.getElementById('accidents').checked) {
+        if(document.getElementById('all').checked) {accView();}
+        else if(document.getElementById('pastday').checked) pastDayAccView();
+        else if(document.getElementById('pastweek').checked) pastWeekAccView();
+        else if(document.getElementById('allweekday').checked) WeekdayAccView();
+        else if(document.getElementById('allweekends').checked)  WeekendsAccView();
+        
+      } else if (document.getElementById('complaints').checked){
+        print("complaints checked");
+        if(document.getElementById('all').checked) compView();
+        if(document.getElementById('pastday').checked) pastDayCompView();
+        if(document.getElementById('pastweek').checked) pastWeekCompView();
+        if(document.getElementById('allweekday').checked) WeekdayCompView();
+        if(document.getElementById('allweekends').checked)  WeekendsCompView();
+      }
+    }
+
+
+    $('#all').click(function(){
+      showCertainView();
+    }) 
+       
+    $('#accidents').click(function(){
+      showCertainView();
+    }) 
+
+    $('#complaints').click(function(){
+      showCertainView();
+    }) 
+
+    $('#pastday').click(function(){
+      showCertainView();
+    }) 
+
+    $('#pastweek').click(function(){
+      showCertainView();
+    })
+
+    $('#allweekday').click(function(){
+      showCertainView();
+    })
+
+    $('#allweekends').click(function(){
+      showCertainView();
+    })
+
+  </script>
+</html>
+
+
