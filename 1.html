@@ -4,21 +4,21 @@
 	<script src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
 	<script type="text/javascript">
 			
-		var scrambler = {
+	var scrambler = {
 
-	       randomCharFunc : function () {
+		randomCharFunc : function () {
 
 	       	return Math.floor(Math.random() * (126 - 32)) + 32
 
 	       },
 
-	       randomCharsFunc : function (minlgth,maxlgth) {
+		randomCharsFunc : function (minlgth,maxlgth) {
 
-	       		var p = document.getElementById("scrambleP");
-	       	scrambleText = "";
-	       	charnums = Math.floor(Math.random() * (maxlgth - minlgth)) + minlgth;
+		 var p = document.getElementById("scrambleP");
+	       	 scrambleText = "";
+	       	 charnums = Math.floor(Math.random() * (maxlgth - minlgth)) + minlgth;
 
-	       	for (var i = 0; i <= charnums; i++) {
+	       	 for (var i = 0; i <= charnums; i++) {
 	       		scrambleText = String.fromCharCode(this.randomCharFunc());
 	       		var x = document.createElement("SPAN");
 	       		var t = document.createTextNode(scrambleText);
