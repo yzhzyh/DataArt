@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+	<script src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
+	<script type="text/javascript">
+			
+		var scrambler = {
+
+	       randomCharFunc : function () {
+
+	       	return Math.floor(Math.random() * (126 - 32)) + 32
+
+	       },
+
+	       randomCharsFunc : function (minlgth,maxlgth) {
+
+	       		var p = document.getElementById("scrambleP");
+	       	scrambleText = "";
+	       	charnums = Math.floor(Math.random() * (maxlgth - minlgth)) + minlgth;
+
+	       	for (var i = 0; i <= charnums; i++) {
+	       		scrambleText = String.fromCharCode(this.randomCharFunc());
+	       		var x = document.createElement("SPAN");
+	       		var t = document.createTextNode(scrambleText);
+	       		x.appendChild(t);
+	       		p.appendChild(x);
+
+	       	}
+
+	       },
+
+
+	       scrambleFunc : function() {
+
+	       	var p1 = document.getElementById("scrambleP");
+	       	p1.innerHTML = "";
+	       	var p2 = document.getElementById("unscrambleP");
+	       	p2.innerHTML = "";
+	       	textInput = $('#textinput').attr('value');
+	       	textOutput = "";
+	            
+	        for (var i = 0; i < textInput.length; i++) {
+
+	        	var x = document.createElement("SPAN");
+	        	var t = document.createTextNode(textInput[i]);
+	        	x.appendChild(t);
+	        	x.hidden = true;
+	        	p1.appendChild(x);
+	        	this.randomCharsFunc(30,80);
+           	}
+
+	       	document.getElementById("scrambleBtn").disabled = true;
+	       	document.getElementById("unscrambleBtn").disabled = false;
+	
+
+	       },
+
+
+	       unscrambleFunc : function () {
+
+	       	var Description = "";
+
+	       	$(document).ready(function(){
+	       		$("span:hidden").each(function () {
+	       			Description += $(this).text();
+	       		})
+
+	       		var p2 = document.getElementById("unscrambleP");
+	       		p2.innerHTML = "";
+	         
+	           	var t = document.createTextNode(Description);
+	           	p2.appendChild(t);
+	          
+	            })
+
+	       		document.getElementById("scrambleBtn").disabled = false;
+       			document.getElementById("unscrambleBtn").disabled = true;
+
+	       }
+
+
+	   };
+
+
+			//Elegantly unscramble this message using the space provided. Then write the scrambler that made it. The answer is an object with global scope that can scramble and unscramble any text any number of times.			
+		</script>
+		<style>
+		body {
+			font-family: monospace;
+		}
+	</style>
+</head>
+<body>
+	<span>Input Text You Want To Scramble Below.</span><br><textarea id="textinput"></textarea>
+	<br>
+	<button id="scrambleBtn" onClick="scrambler.scrambleFunc()">Scamble</button>
+	<button id="unscrambleBtn" onClick="scrambler.unscrambleFunc()">Unscramble</button>
+	<br>
+	<p id="scrambleP"></p>
+	<p id="unscrambleP"></p>
+</body>
+</html>
